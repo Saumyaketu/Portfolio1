@@ -28,12 +28,6 @@ export default function About() {
           </ul>
         </div>
 
-        {/* Image Placeholder */}
-        <div className="relative group">
-          <div className="w-full aspect-square bg-slate-700 rounded flex justify-center items-center">
-            Add Photo Here
-          </div>
-        </div>
 
       </div>
     </section>

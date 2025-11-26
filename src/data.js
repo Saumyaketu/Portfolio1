@@ -1,5 +1,8 @@
 import { Trophy, Terminal, Code, Cpu, Monitor, Server, Database, GraduationCap } from "lucide-react";
 
+const project1Glob = import.meta.glob('./assets/project1*.png', { eager: true, import: 'default' });
+const project1Images = Object.keys(project1Glob).sort().map(key => project1Glob[key]);
+
 const DATA = {
   personal: {
     name: "Saumyaketu Chand Gupta",
@@ -67,6 +70,7 @@ const DATA = {
         "JWT-based login system",
         "Drawing editor"
       ],
+      images: project1Images,
       links: {
         live: "https://saumyaketu-notes-app.onrender.com/",
         github: "https://github.com/Saumyaketu/Notes-App"
