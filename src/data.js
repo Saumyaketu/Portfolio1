@@ -3,6 +3,9 @@ import { Trophy, Terminal, Code, Cpu, Monitor, Server, Database, GraduationCap }
 const project1Glob = import.meta.glob('./assets/project1*.png', { eager: true, import: 'default' });
 const project1Images = Object.keys(project1Glob).sort().map(key => project1Glob[key]);
 
+const bookGlob = import.meta.glob('./assets/project2*.png', { eager: true, import: 'default' });
+const bookImages = Object.keys(bookGlob).sort().map(key => bookGlob[key]);
+
 const DATA = {
   personal: {
     name: "Saumyaketu Chand Gupta",
@@ -74,6 +77,24 @@ const DATA = {
       links: {
         live: "https://saumyaketu-notes-app.onrender.com/",
         github: "https://github.com/Saumyaketu/Notes-App"
+      }
+    },
+    {
+      id: 2,
+      topic: "AI & Machine Learning",
+      title: "LLM Book Recommender",
+      tech: ["Python", "LangChain", "ChromaDB", "Hugging-Face", "Gradio"],
+      description: "A semantic book recommendation engine using Large Language Models and vector search.",
+      points: [
+        "Semantic search with natural language queries",
+        "Emotion and category filtering",
+        "Zero-shot classification for missing genres",
+        "Interactive dashboard built with Gradio"
+      ],
+      images: bookImages,
+      links: {
+        live: "https://github.com/saumyaketu/book-recommender-llm",
+        github: "https://github.com/saumyaketu/book-recommender-llm"
       }
     }
   ]
