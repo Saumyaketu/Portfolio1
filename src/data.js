@@ -24,21 +24,21 @@ const DATA = {
       degree: "B.Tech in Computer Science and Engineering",
       school: "Indian Institute of Information Technology, Kota",
       period: "Aug 2023 - Jun 2027",
-      grade: "CGPA: 7.96/10"
+      grade: "CGPA: 7.99/10"
     }
   ],
 
   stats: [
-    { label: "Leetcode", achievement: "Knight", value: "1862", sub: "Max Rating", icon: Trophy },
+    { label: "Leetcode", achievement: "Knight", value: "1904", sub: "Max Rating", icon: Trophy },
     { label: "Codeforces", achievement: "Specialist", value: "1483", sub: "Max Rating", icon: Terminal },
-    { label: "CodeChef", achievement: "3 Star", value: "1638", sub: "Max Rating", icon: Code },
+    { label: "CodeChef", achievement: "3 Star", value: "1661", sub: "Max Rating", icon: Code },
     { label: "Problems Solved", value: "500+", sub: "Across Platforms", icon: Cpu },
-    { label: "CGPA", value: "7.96", sub: "B.Tech, CSE", icon: GraduationCap },
+    { label: "CGPA", value: "7.99", sub: "B.Tech, CSE", icon: GraduationCap },
   ],
 
   skills: [
-    { category: "Languages", items: ["C++", "Python", "JavaScript (Node.js)"], icon: Code },
-    { category: "Frontend", items: ["React.js", "Tailwind CSS", "Vite", "HTML/CSS"], icon: Monitor },
+    { category: "Languages", items: ["C++", "Python", "JavaScript (Node.js / Next.js)"], icon: Code },
+    { category: "Frontend", items: ["Node.js", "Next.js", "Tailwind CSS", "Vite", "HTML/CSS"], icon: Monitor },
     { category: "Backend", items: ["Node.js", "Express.js", "REST API Design", "JWT Auth"], icon: Server },
     { category: "Database & Cloud", items: ["MongoDB", "Mongoose", "Cloudinary"], icon: Database },
     { category: "Tools & Concepts", items: ["Git", "GitHub", "Google Colab", "DSA", "Computer Network", "Operating Sytem"], icon: Terminal },
