@@ -21,7 +21,7 @@ export default function Hero({ data }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="text-6xl font-bold text-white mb-4"
+        className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight"
       >
         {p.name}.
       </motion.h1>
@@ -30,35 +30,34 @@ export default function Hero({ data }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="text-4xl text-slate-400 mb-6"
+        className="text-3xl md:text-5xl font-bold text-slate-400 mb-6 leading-tight"
       >
-        I build scalable web systems.
+        Full-Stack Developer | Competitive Programmer | ML Enthusiast.
       </motion.h2>
 
       <motion.p 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="text-lg text-slate-400 max-w-xl mb-10"
+        className="text-lg text-slate-400 max-w-2xl mb-10 leading-relaxed"
       >
-        I'm a {p.title}. I focus on web development and competitive programming at 
-        <span className="text-emerald-400"> IIIT Kota</span>.
+        I'm a Computer Science undergraduate at <span className="text-emerald-400">IIIT Kota</span>. I bridge the gap between complex algorithmic problem-solving (ranked top 3% globally on LeetCode) and production-level software engineering. From WebRTC video platforms to predictive machine learning models, I build robust and highly optimized solutions.
       </motion.p>
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="flex gap-4"
+        className="flex flex-wrap items-center gap-4"
       >
-        <a href="#projects" className="px-6 py-3 border border-emerald-400 rounded text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/30 hover:scale-110 transition-colors">
+        <a href="#projects" className="px-6 py-3 border border-emerald-400 rounded text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/20 hover:scale-105 transition-all font-mono text-sm">
           Check my work
         </a>
-        <a href={p.socials.github} target="_blank" className="p-3 hover:text-emerald-400 hover:scale-110 transition-colors"><Github /></a>
-        <a href={p.socials.linkedin} target="_blank" className="p-3 hover:text-emerald-400 hover:scale-110 transition-colors"><Linkedin /></a>
+        <a href={p.socials.github} target="_blank" className="p-3 text-slate-400 hover:text-emerald-400 hover:-translate-y-1 transition-all"><Github /></a>
+        <a href={p.socials.linkedin} target="_blank" className="p-3 text-slate-400 hover:text-emerald-400 hover:-translate-y-1 transition-all"><Linkedin /></a>
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-20">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-20">
         {data.stats.map((s, i) => (
           <motion.div
             key={i}

@@ -9,8 +9,6 @@ export default function Contact({ personal }) {
         viewport={{ once: false, amount: 0.5 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-emerald-400 font-mono">What's Next?</p>
-
         <h2 className="text-4xl text-white font-bold mb-4 mt-2">Get In Touch</h2>
 
         <p className="text-slate-400 max-w-xl mx-auto mb-10">
