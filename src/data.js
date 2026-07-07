@@ -1,4 +1,8 @@
 import { Trophy, Terminal, Code, Cpu, Monitor, Server, Database, GraduationCap } from "lucide-react";
+const CG = import.meta.env.VITE_CG;
+const CODEFORCES = import.meta.env.VITE_CODEFORCES;
+const LEETCODE = import.meta.env.VITE_LEETCODE;
+const CODECHEF = import.meta.env.VITE_CODECHEF;
 
 const videoPlatGlob = import.meta.glob('./assets/project3*.png', { eager: true, import: 'default' });
 const videoPlatImages = Object.keys(videoPlatGlob).sort().map(key => videoPlatGlob[key]);
@@ -30,16 +34,16 @@ const DATA = {
       degree: "B.Tech in Computer Science and Engineering",
       school: "Indian Institute of Information Technology, Kota",
       period: "Aug 2023 - Jun 2027",
-      grade: "CGPA: 8.02/10"
+      grade: `CGPA: ${CG}/10`
     }
   ],
 
   stats: [
-    { label: "Leetcode", achievement: "Knight", value: "1962", sub: "Max Rating", icon: Trophy },
-    { label: "Codeforces", achievement: "Specialist", value: "1533", sub: "Max Rating", icon: Terminal },
-    { label: "CodeChef", achievement: "3 Star", value: "1661", sub: "Max Rating", icon: Code },
+    { label: "Leetcode", achievement: "Knight", value: `${LEETCODE}`, sub: "Max Rating", icon: Trophy },
+    { label: "Codeforces", achievement: "Specialist", value: `${CODEFORCES}`, sub: "Max Rating", icon: Terminal },
+    { label: "CodeChef", achievement: "3 Star", value: `${CODECHEF}`, sub: "Max Rating", icon: Code },
     { label: "Problems Solved", value: "500+", sub: "Across Platforms", icon: Cpu },
-    { label: "CGPA", value: "8.02", sub: "B.Tech, CSE", icon: GraduationCap },
+    { label: "CGPA", value: `${CG}`, sub: "B.Tech, CSE", icon: GraduationCap },
   ],
 
   skills: [
