@@ -31,11 +31,12 @@ export default function About() {
 
         <p>
           Professionally, my experience spans from developing hybrid real-time
-          architectures using WebRTC and WebSockets to deploying distributed URL
-          shorteners with Redis caching. I've also ventured into Data Science,
-          engineering neural networks for healthcare predictions and
-          constructing semantic recommendation engines using Large Language
-          Models.
+          architectures using WebRTC and WebSockets to engineering high-throughput
+          distributed systems like a resilient URL shortener featuring pre-buffered
+          Base-62 tokens, Bloom filter DDoS protection, and sub-millisecond Redis caching.
+          I've also ventured into Data Science, engineering neural networks for
+          healthcare predictions and constructing semantic recommendation engines
+          using Large Language Models.
         </p>
 
         <p className="pt-4 font-mono text-sm text-emerald-400">
@@ -46,13 +47,13 @@ export default function About() {
           {[
             "JavaScript (ES6+)",
             "TypeScript",
-            "React & Next.js",
-            "Node.js & Express",
+            "React 19 & Next.js",
+            "Node.js & Express 5",
             "C++",
             "Python",
             "MongoDB",
-            "Redis",
-            "Docker",
+            "Redis & Bloom Filters",
+            "Docker Compose",
           ].map((item) => (
             <li
               key={item}
