@@ -4,8 +4,21 @@ const CODEFORCES = import.meta.env.VITE_CODEFORCES;
 const LEETCODE = import.meta.env.VITE_LEETCODE;
 const CODECHEF = import.meta.env.VITE_CODECHEF;
 
-const videoPlatGlob = import.meta.glob('./assets/project3*.png', { eager: true, import: 'default' });
-const videoPlatImages = Object.keys(videoPlatGlob).sort().map(key => videoPlatGlob[key]);
+const videoPlatGlob = import.meta.glob('./assets/project3*.{png,svg,gif}', { eager: true, import: 'default' });
+// Prioritize live demo GIF first, then screenshots and architecture diagram
+const preferredVideoOrder = [
+  './assets/project3_architecture.svg',
+  './assets/project3_demo.gif',
+  './assets/project3a.png',
+  './assets/project3b.png',
+  './assets/project3c.png',
+  './assets/project3d.png',
+  './assets/project3e.png'
+];
+const videoPlatImages = preferredVideoOrder
+  .filter(key => videoPlatGlob[key])
+  .concat(Object.keys(videoPlatGlob).filter(key => !preferredVideoOrder.includes(key)))
+  .map(key => videoPlatGlob[key]);
 
 const URLShortGlob = import.meta.glob('./assets/project4*.{png,svg}', { eager: true, import: 'default' });
 const URLShortImages = Object.keys(URLShortGlob).sort().map(key => URLShortGlob[key]);
@@ -48,9 +61,9 @@ const DATA = {
 
   skills: [
     { category: "Languages", items: ["C++", "Python", "JavaScript", "TypeScript"], icon: Code },
-    { category: "Frontend", items: ["React 19", "Next.js", "Tailwind CSS", "Vite", "HTML/CSS"], icon: Monitor },
-    { category: "Backend", items: ["Node.js / Express 5", "REST API", "JWT Auth", "WebSockets", "WebRTC", "Sqids"], icon: Server },
-    { category: "Database & Cloud", items: ["MongoDB", "Redis", "Docker", "Bloom Filters", "Cloudinary"], icon: Database },
+    { category: "Frontend", items: ["React 19", "Next.js 16", "Tailwind CSS", "PWA (@serwist)", "Vite", "HTML/CSS"], icon: Monitor },
+    { category: "Backend & Real-Time", items: ["Node.js / Express 5", "WebSockets (Socket.io)", "WebRTC (simple-peer)", "REST API", "JWT Auth", "Sqids"], icon: Server },
+    { category: "Database & Cloud", items: ["MongoDB", "Redis", "Cloudinary", "Firebase", "Docker Compose", "Bloom Filters"], icon: Database },
     { category: "Core CS", items: ["Distributed Systems", "Data Structures & Algorithms", "System Design", "Operating Systems", "Computer Networks", "DBMS"], icon: Terminal },
   ],
 
@@ -74,15 +87,45 @@ const DATA = {
     {
       id: 1,
       topic: "Full Stack / Real-Time Systems",
-      title: "Full-Stack Video Platform",
-      tech: ["Next.js", "Node.js", "Express", "MongoDB", "WebRTC", "Socket.io"],
-      description: "Engineered a hybrid architecture (REST, WebSockets, WebRTC) for synchronized real-time video playback.",
-      points: [
-        "Built a context-aware UI and secure authentication using location-based logic and OTP routing.",
-        "Implemented WebRTC P2P video calling with real-time screen sharing and session recording.",
-        "Developed an automated moderation and real-time translation system supporting 100+ languages.",
-        "Integrated Razorpay webhooks for premium access control, ensuring 100% transaction consistency."
+      title: "YouTube Clone & Synchronized Watch Party Platform",
+      tagline: "A full-stack video streaming and real-time collaborative platform featuring WebRTC peer-to-peer video calls, WebSocket-synchronized watch parties, and tiered Razorpay monetization.",
+      tech: [
+        "Next.js 16 (React 19)",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Socket.io",
+        "WebRTC",
+        "Cloudinary",
+        "Firebase",
+        "Razorpay",
+        "PWA (@serwist)",
+        "Tailwind CSS"
       ],
+      metrics: [
+        { label: "Playback Drift", value: "< 250 ms", detail: "Socket.io Drift Compensator" },
+        { label: "P2P Video Calling", value: "0 ms Relay", detail: "WebRTC Direct Mesh (simple-peer)" },
+        { label: "Media Pipeline", value: "0 RAM Stash", detail: "Multer Chunked Stream to Cloudinary" },
+        { label: "Monetization", value: "Razorpay", detail: "Tiered Access & Nodemailer Invoices" }
+      ],
+      description: "A production-grade video streaming and real-time collaborative watch party platform architected with a hybrid REST, WebSocket, and WebRTC mesh topology for zero-latency communication and adaptive security.",
+      points: [
+        "Peer-to-Peer Video Calling: Architected a zero-latency, multi-user video calling system using WebRTC (simple-peer) with custom Socket.io signaling, featuring user pinning, video/audio toggles, and live screen sharing.",
+        "Synchronized Watch Parties: Built a low-latency watch party engine using WebSockets, synchronizing play, pause, and seek states across geographically dispersed users with drift compensation.",
+        "In-Browser Session Recording: Integrated native MediaRecorder API to enable client-side screen recording and local downloads without server rendering overhead.",
+        "Cloud Media Pipeline: Implemented chunked media uploads via Multer and automated stream optimization using Cloudinary, preventing server memory bottlenecks when handling large video files.",
+        "RESTful Architecture: Designed scalable Express.js & MongoDB (Mongoose) APIs handling user engagement (likes, views, playlists, watch history, and 'watch later' queues).",
+        "Smart Community Moderation: Engineered an automated comment moderation system with multilingual translation, city-level geotagging, input sanitization, and automatic deletion triggered by dislike thresholds.",
+        "Tiered Subscription System: Integrated Razorpay Payment Gateway for Bronze, Silver, and Gold tiers, enforcing tier-based watch limits, daily download quotas, and automated HTML invoice generation via Nodemailer.",
+        "Context-Aware Security: Implemented adaptive authentication (Google OAuth & Phone OTP via Firebase) that dynamically shifts verification methods based on geolocation and IP metadata.",
+        "Offline-First PWA: Configured offline caching and background sync with @serwist/next, allowing users to save videos locally and install the application natively across mobile and desktop.",
+        "Custom Gesture Navigation: Developed a mobile-friendly gesture controller handling single-tap (play/pause), double-tap (10s seek), and triple-tap (next video / comments modal) events."
+      ],
+      caseStudy: {
+        type: "video",
+        engineeringChallenge: "Standard video streaming tutorial clones fail when scaled to real-time multi-user interaction: network latency causes out-of-sync watch parties, video relay servers incur unsustainable bandwidth costs, and server memory crashes during large video uploads. The goal was to architect a hybrid REST, WebSocket, and WebRTC mesh system delivering frame-accurate watch party sync (<250ms drift), zero-latency P2P calling, and zero-RAM media streaming."
+      },
+      testModeNotice: "Razorpay is configured in Test Mode so recruiters can test Bronze, Silver, and Gold subscriptions. Open two browser windows side-by-side to test real-time video synchronization and WebRTC calls.",
       images: videoPlatImages,
       links: {
         live: "https://youtube-clone-saumyaketu.vercel.app/",

@@ -236,6 +236,14 @@ export default function Projects({ data }) {
                   </a>
                 )}
               </div>
+
+              {/* Optional Recruiter / Demo Notice */}
+              {proj.testModeNotice && (
+                <div className="mt-4 text-xs text-amber-300/90 bg-amber-950/25 border border-amber-500/25 rounded-lg px-3.5 py-2 flex items-start gap-2 font-mono">
+                  <span className="text-amber-400 font-bold mt-0.5">💡</span>
+                  <span className="leading-relaxed">{proj.testModeNotice}</span>
+                </div>
+              )}
             </div>
 
             {/* Slideshow Side */}
