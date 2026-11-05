@@ -34,6 +34,7 @@ function ProjectCarousel({ images, title, onOpenCaseStudy, hasCaseStudy }) {
   }
 
   const isCurrentSvg = typeof images[currentIndex] === "string" && images[currentIndex].includes(".svg");
+  const isCurrentGif = typeof images[currentIndex] === "string" && images[currentIndex].includes(".gif");
 
   return (
     <div className="relative h-72 md:h-full min-h-[320px] w-full group overflow-hidden rounded-xl bg-slate-900 border border-slate-700/80 shadow-lg flex items-center justify-center">
@@ -49,6 +50,9 @@ function ProjectCarousel({ images, title, onOpenCaseStudy, hasCaseStudy }) {
         <span>{currentIndex + 1} / {images.length}</span>
         {isCurrentSvg && (
           <span className="text-emerald-400 font-semibold">• Architecture Flow</span>
+        )}
+        {isCurrentGif && (
+          <span className="text-amber-400 font-semibold">• Live Demo GIF</span>
         )}
       </div>
 

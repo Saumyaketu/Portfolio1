@@ -5,6 +5,7 @@ import { X, ExternalLink, Github } from "lucide-react";
 import CaseStudyMetrics from "./case-study/CaseStudyMetrics";
 import VideoCaseStudy from "./case-study/VideoCaseStudy";
 import UrlShortenerCaseStudy from "./case-study/UrlShortenerCaseStudy";
+import BookRecommenderCaseStudy from "./case-study/BookRecommenderCaseStudy";
 
 export default function CaseStudyModal({ project, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("architecture");
@@ -14,6 +15,12 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
     project?.caseStudy?.type === "video" ||
     project?.title?.toLowerCase().includes("video") ||
     project?.title?.toLowerCase().includes("youtube");
+
+  const isBookProject =
+    project?.id === 4 ||
+    project?.caseStudy?.type === "book" ||
+    project?.title?.toLowerCase().includes("book") ||
+    project?.title?.toLowerCase().includes("recommender");
 
   // Reset to architecture tab when modal opens or project changes
   useEffect(() => {
@@ -65,7 +72,11 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
                   SYSTEM ARCHITECTURE CASE STUDY
                 </span>
                 <span className="text-slate-500 text-xs font-mono">
-                  • {isVideoProject ? "Real-Time Streaming & P2P Topology" : "Enterprise-Grade Distributed Systems"}
+                  • {isVideoProject
+                    ? "Real-Time Streaming & P2P Topology"
+                    : isBookProject
+                    ? "Autonomous ReAct Agent & 2-Stage Retrieval"
+                    : "Enterprise-Grade Distributed Systems"}
                 </span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
@@ -108,7 +119,7 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
           </div>
 
           {/* Quick Metrics Bar */}
-          <CaseStudyMetrics isVideoProject={isVideoProject} />
+          <CaseStudyMetrics isVideoProject={isVideoProject} isBookProject={isBookProject} />
 
           {/* Navigation Tabs */}
           <div className="flex border-b border-slate-800 px-6 bg-slate-900/50">
@@ -148,6 +159,8 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
           <div className="p-6 md:p-8 space-y-8 flex-1">
             {isVideoProject ? (
               <VideoCaseStudy activeTab={activeTab} project={project} />
+            ) : isBookProject ? (
+              <BookRecommenderCaseStudy activeTab={activeTab} project={project} />
             ) : (
               <UrlShortenerCaseStudy activeTab={activeTab} project={project} />
             )}
@@ -158,6 +171,8 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
             <div className="text-xs text-slate-400 font-mono">
               {isVideoProject
                 ? "Next.js 16 (React 19) • WebRTC mesh • Socket.io drift sync < 250ms"
+                : isBookProject
+                ? "LangGraph ReAct • ChromaDB + Cross-Encoder • 100% Local Inference (Ollama)"
                 : "Docker compose ready • Tested with 300+ concurrent requests"}
             </div>
             <div className="flex items-center gap-3">

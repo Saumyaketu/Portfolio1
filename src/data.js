@@ -1,4 +1,4 @@
-import { Trophy, Terminal, Code, Cpu, Monitor, Server, Database, GraduationCap } from "lucide-react";
+import { Trophy, Terminal, Code, Cpu, Monitor, Server, Database, GraduationCap, Bot } from "lucide-react";
 const CG = import.meta.env.VITE_CG;
 const CODEFORCES = import.meta.env.VITE_CODEFORCES;
 const LEETCODE = import.meta.env.VITE_LEETCODE;
@@ -26,8 +26,20 @@ const URLShortImages = Object.keys(URLShortGlob).sort().map(key => URLShortGlob[
 const project1Glob = import.meta.glob('./assets/project1*.png', { eager: true, import: 'default' });
 const project1Images = Object.keys(project1Glob).sort().map(key => project1Glob[key]);
 
-const bookGlob = import.meta.glob('./assets/project2*.png', { eager: true, import: 'default' });
-const bookImages = Object.keys(bookGlob).sort().map(key => bookGlob[key]);
+const bookGlob = import.meta.glob('./assets/project2*.{png,svg,gif}', { eager: true, import: 'default' });
+const preferredBookOrder = [
+  './assets/project2_architecture.svg',
+  './assets/project2_demo.gif',
+  './assets/project2a.png',
+  './assets/project2b.png',
+  './assets/project2c.png',
+  './assets/project2d.png',
+  './assets/project2e.png'
+];
+const bookImages = preferredBookOrder
+  .filter(key => bookGlob[key])
+  .concat(Object.keys(bookGlob).filter(key => !preferredBookOrder.includes(key)))
+  .map(key => bookGlob[key]);
 
 const DATA = {
   personal: {
@@ -63,6 +75,7 @@ const DATA = {
     { category: "Languages", items: ["C++", "Python", "JavaScript", "TypeScript"], icon: Code },
     { category: "Frontend", items: ["React 19", "Next.js 16", "Tailwind CSS", "PWA (@serwist)", "Vite", "HTML/CSS"], icon: Monitor },
     { category: "Backend & Real-Time", items: ["Node.js / Express 5", "WebSockets (Socket.io)", "WebRTC (simple-peer)", "REST API", "JWT Auth", "Sqids"], icon: Server },
+    { category: "AI & NLP Systems", items: ["LangGraph", "LangChain", "ChromaDB", "Llama 3.2 (Ollama)", "Cross-Encoders", "Hugging Face", "Sentence-Transformers"], icon: Bot },
     { category: "Database & Cloud", items: ["MongoDB", "Redis", "Cloudinary", "Firebase", "Docker Compose", "Bloom Filters"], icon: Database },
     { category: "Core CS", items: ["Distributed Systems", "Data Structures & Algorithms", "System Design", "Operating Systems", "Computer Networks", "DBMS"], icon: Terminal },
   ],
@@ -174,6 +187,49 @@ const DATA = {
     },
     {
       id: 3,
+      topic: "Agentic AI / Semantic Retrieval",
+      title: "Agentic Book Recommender & Semantic Discovery Engine",
+      tagline: "Autonomous ReAct agent powered by LangGraph, ChromaDB, and local Llama 3.2 for conversational, emotion-aware book recommendations with cross-encoder re-ranking.",
+      tech: [
+        "Python",
+        "LangGraph",
+        "LangChain",
+        "Llama 3.2 (3B)",
+        "Ollama",
+        "ChromaDB",
+        "Hugging Face Transformers",
+        "Sentence-Transformers",
+        "Cross-Encoder",
+        "Gradio",
+        "Pandas"
+      ],
+      metrics: [
+        { label: "Retrieval Architecture", value: "2-Stage Rerank", detail: "ChromaDB + Cross-Encoder" },
+        { label: "Agent State Machine", value: "ReAct Graph", detail: "LangGraph + Llama 3.2" },
+        { label: "Catalog Enriched", value: "7,000+ Books", detail: "Zero-Shot NLI & DistilRoBERTa" },
+        { label: "Inference Cost", value: "$0 / 100% Local", detail: "Zero API Fees & Zero Leakage" }
+      ],
+      description: "An end-to-end AI/NLP engineering project and autonomous ReAct agent that replaces rigid keyword matching with deep semantic discovery, multi-stage retrieval, emotion analysis, and multi-turn conversational reasoning.",
+      points: [
+        "Autonomous Agentic Workflow (LangGraph & ReAct): Engineered a multi-turn ReAct (Reasoning + Acting) state machine using LangGraph and a local Llama 3.2 (3B) model via Ollama to autonomously parse user intent, decide tool execution, and deliver reasoned recommendations with follow-up context memory.",
+        "Two-Stage Semantic Retrieval & Re-ranking: Implemented high-precision information retrieval pairing ChromaDB vector search (all-MiniLM-L6-v2 dense embeddings) with a Cross-Encoder re-ranking stage (ms-marco-MiniLM-L-6-v2) to boost semantic relevance over standard cosine distance.",
+        "Automated NLP Data Pipeline: Enriched a raw 7,000+ book dataset by orchestrating Zero-Shot Classification (facebook/bart-large-mnli) to infer missing genre metadata and DistilRoBERTa Emotion Analysis (j-hartmann/emotion-english-distilroberta-base) to score 5 distinct emotional tones (Joy, Sadness, Suspense/Fear, Surprise, Anger).",
+        "Multi-Turn Conversational UX: Built an interactive web dashboard in Gradio featuring dynamic image galleries, real-time agent reasoning explanations, and conversational state retention (e.g., seamlessly handling follow-ups like 'Make them more suspenseful instead').",
+        "Privacy-First & Local Execution: Designed the entire inference and embedding pipeline to run locally with zero external API fees or data leakage using Ollama and Hugging Face Transformers."
+      ],
+      caseStudy: {
+        type: "book",
+        engineeringChallenge: "Traditional book search engines rely heavily on rigid keyword matching (titles, authors) and fail to capture abstract vibes, plot themes, or emotional tones. Furthermore, standard vector search suffers from bi-encoder cross-attention loss and metadata sparsity across book catalogs. The goal was to engineer an autonomous conversational discovery engine that retrieves, re-ranks, and filters 7,000+ books with zero external API fees or data leakage."
+      },
+      testModeNotice: "Runs 100% locally with zero external API costs. Click 'System Architecture ↗' for the complete ReAct state machine deep dive, or watch the animated demo GIF in the gallery.",
+      images: bookImages,
+      links: {
+        live: "https://github.com/saumyaketu/book-recommender-llm",
+        github: "https://github.com/saumyaketu/book-recommender-llm"
+      }
+    },
+    {
+      id: 4,
       topic: "Full Stack",
       title: "Notes App",
       tech: ["MERN", "JWT", "Cloudinary", "Vite", "Tailwind"],
@@ -188,24 +244,6 @@ const DATA = {
       links: {
         live: "https://saumyaketu-notes-app.onrender.com/",
         github: "https://github.com/Saumyaketu/Notes-App"
-      }
-    },
-    {
-      id: 4,
-      topic: "AI & Machine Learning",
-      title: "LLM Book Recommender",
-      tech: ["Python", "LangChain", "ChromaDB", "Hugging-Face", "Gradio"],
-      description: "A semantic book recommendation engine using Large Language Models and vector search.",
-      points: [
-        "Semantic search with natural language queries",
-        "Emotion and category filtering",
-        "Zero-shot classification for missing genres",
-        "Interactive dashboard built with Gradio"
-      ],
-      images: bookImages,
-      links: {
-        live: "https://github.com/saumyaketu/book-recommender-llm",
-        github: "https://github.com/saumyaketu/book-recommender-llm"
       }
     }
   ]

@@ -1,0 +1,382 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%" style="background:#090d16; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </linearGradient>
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+
+    <!-- Drop Shadows & Glows -->
+    <filter id="glowEmerald" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#10b981" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#06b6d4" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#8b5cf6" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.25"/>
+    </filter>
+    <filter id="shadowCard" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowEmerald" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#10b981"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#06b6d4"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrowSlate" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="820" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <g opacity="0.07">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+    </pattern>
+    <rect width="1200" height="820" fill="url(#grid)"/>
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(60, 45)">
+    <rect x="0" y="0" width="190" height="26" rx="13" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="95" y="17" fill="#34d399" font-size="11" font-weight="600" font-family="monospace" text-anchor="middle" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+    
+    <text x="0" y="58" fill="#ffffff" font-size="24" font-weight="700">Agentic Book Recommender &amp; Semantic Discovery Engine</text>
+    <text x="0" y="80" fill="#94a3b8" font-size="14">Autonomous LangGraph ReAct Agent • 2-Stage Retrieval (ChromaDB + Cross-Encoder) • Local Llama 3.2</text>
+  </g>
+
+  <!-- Top Badges / KPI Highlights -->
+  <g transform="translate(730, 42)">
+    <g transform="translate(0, 0)">
+      <rect width="105" height="44" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="52" y="18" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">2-Stage</text>
+      <text x="52" y="33" fill="#94a3b8" font-size="10" text-anchor="middle">Vector + Rerank</text>
+    </g>
+    <g transform="translate(115, 0)">
+      <rect width="110" height="44" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="55" y="18" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Llama 3.2</text>
+      <text x="55" y="33" fill="#94a3b8" font-size="10" text-anchor="middle">Local via Ollama</text>
+    </g>
+    <g transform="translate(235, 0)">
+      <rect width="105" height="44" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="52" y="18" fill="#a78bfa" font-size="13" font-weight="700" text-anchor="middle">7,000+</text>
+      <text x="52" y="33" fill="#94a3b8" font-size="10" text-anchor="middle">Enriched Books</text>
+    </g>
+    <g transform="translate(350, 0)">
+      <rect width="90" height="44" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="45" y="18" fill="#f59e0b" font-size="13" font-weight="700" text-anchor="middle">$0.00</text>
+      <text x="45" y="33" fill="#94a3b8" font-size="10" text-anchor="middle">100% Private</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- MAIN PIPELINE: RUNTIME AGENTIC INFERENCE    -->
+  <!-- ========================================== -->
+
+  <!-- STEP 1: USER CONVERSATION / GRADIO UI -->
+  <g transform="translate(60, 160)">
+    <rect width="210" height="390" rx="14" fill="url(#cardGradDark)" stroke="#06b6d4" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="210" height="38" rx="14" fill="#083344" fill-opacity="0.4"/>
+    <circle cx="20" cy="19" r="6" fill="#06b6d4"/>
+    <text x="36" y="23" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="0.5">CONVERSATIONAL UX</text>
+
+    <!-- User Input Box -->
+    <g transform="translate(15, 55)">
+      <rect width="180" height="75" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="14" y="22" fill="#38bdf8" font-size="11" font-weight="700">User Query Prompt</text>
+      <text x="14" y="40" fill="#e2e8f0" font-size="10" font-style="italic">"Books with philosophical</text>
+      <text x="14" y="54" fill="#e2e8f0" font-size="10" font-style="italic">mystery and deep plots"</text>
+      <text x="14" y="68" fill="#94a3b8" font-size="9">Natural Language Vibe</text>
+    </g>
+
+    <!-- Follow Up Box -->
+    <g transform="translate(15, 145)">
+      <rect width="180" height="75" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.2"/>
+      <text x="14" y="22" fill="#a78bfa" font-size="11" font-weight="700">Multi-Turn Follow-Up</text>
+      <text x="14" y="40" fill="#e2e8f0" font-size="10" font-style="italic">"Make them more</text>
+      <text x="14" y="54" fill="#e2e8f0" font-size="10" font-style="italic">suspenseful instead"</text>
+      <text x="14" y="68" fill="#94a3b8" font-size="9">Context Memory Maintained</text>
+    </g>
+
+    <!-- Gradio Presentation Box -->
+    <g transform="translate(15, 235)">
+      <rect width="180" height="135" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="90" y="24" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">Gradio Web Dashboard</text>
+      
+      <rect x="12" y="36" width="156" height="42" rx="4" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>
+      <text x="20" y="52" fill="#34d399" font-size="9" font-weight="600">Dynamic Book Covers</text>
+      <text x="20" y="66" fill="#94a3b8" font-size="8">Visual Gallery Grid View</text>
+      
+      <rect x="12" y="85" width="156" height="40" rx="4" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>
+      <text x="20" y="101" fill="#38bdf8" font-size="9" font-weight="600">Agent Reasoning Feed</text>
+      <text x="20" y="115" fill="#94a3b8" font-size="8">Real-time "Why this book?"</text>
+    </g>
+  </g>
+
+  <!-- Arrow User UI -> ReAct Agent -->
+  <path d="M 270 200 L 320 200" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <text x="295" y="190" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">Query/Chat</text>
+
+  <!-- STEP 2: AUTONOMOUS ReAct AGENT (LANGGRAPH + LLAMA 3.2) -->
+  <g transform="translate(325, 160)">
+    <rect width="250" height="390" rx="14" fill="url(#cardGradDark)" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="250" height="38" rx="14" fill="#064e3b" fill-opacity="0.35"/>
+    <circle cx="20" cy="19" r="6" fill="#10b981"/>
+    <text x="36" y="23" fill="#34d399" font-size="12" font-weight="700" letter-spacing="0.5">LANGGRAPH ReAct AGENT</text>
+
+    <!-- Local LLM Core -->
+    <g transform="translate(15, 55)">
+      <rect width="220" height="60" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5" filter="url(#glowEmerald)"/>
+      <text x="110" y="25" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Llama 3.2 (3B) Model</text>
+      <text x="110" y="42" fill="#34d399" font-size="10" font-weight="600" text-anchor="middle">Local Inference via Ollama</text>
+      <text x="110" y="54" fill="#94a3b8" font-size="9" text-anchor="middle">Zero Cloud API Call • 0ms Relay</text>
+    </g>
+
+    <!-- ReAct State Machine Loop -->
+    <g transform="translate(15, 128)">
+      <rect width="220" height="242" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="110" y="24" fill="#f59e0b" font-size="11" font-weight="700" text-anchor="middle">ReAct Execution Cycle</text>
+      
+      <!-- Phase 1: Reason -->
+      <g transform="translate(12, 36)">
+        <rect width="196" height="36" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+        <text x="10" y="16" fill="#f59e0b" font-size="10" font-weight="700">1. Reasoning Node (Thought)</text>
+        <text x="10" y="28" fill="#94a3b8" font-size="8.5">Extracts core vibe, themes &amp; intent</text>
+      </g>
+      
+      <path d="M 110 74 L 110 84" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+      <!-- Phase 2: Action / Tool Call -->
+      <g transform="translate(12, 86)">
+        <rect width="196" height="48" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+        <text x="10" y="16" fill="#34d399" font-size="10" font-weight="700">2. Acting Node (Tool Execution)</text>
+        <text x="10" y="29" fill="#e2e8f0" font-size="8.5" font-family="monospace">• search_chroma_db(query)</text>
+        <text x="10" y="41" fill="#e2e8f0" font-size="8.5" font-family="monospace">• filter_by_emotion(tone)</text>
+      </g>
+
+      <path d="M 110 136 L 110 146" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+      <!-- Phase 3: Observation -->
+      <g transform="translate(12, 148)">
+        <rect width="196" height="36" rx="6" fill="#0f172a" stroke="#06b6d4" stroke-width="1"/>
+        <text x="10" y="16" fill="#38bdf8" font-size="10" font-weight="700">3. Observation Node</text>
+        <text x="10" y="28" fill="#94a3b8" font-size="8.5">Evaluates retrieved candidate quality</text>
+      </g>
+
+      <path d="M 110 186 L 110 196" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+      <!-- Phase 4: Final Formulation -->
+      <g transform="translate(12, 198)">
+        <rect width="196" height="34" rx="6" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+        <text x="10" y="15" fill="#a78bfa" font-size="10" font-weight="700">4. Formulate Recommendations</text>
+        <text x="10" y="26" fill="#94a3b8" font-size="8.5">Synthesizes context-aware narrative</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow Agent -> Tool 1 (ChromaDB) -->
+  <path d="M 575 240 L 635 240" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrowEmerald)"/>
+  <text x="605" y="230" fill="#34d399" font-size="9" font-family="monospace" text-anchor="middle">Tool 1</text>
+
+  <!-- STEP 3: 2-STAGE SEMANTIC RETRIEVAL PIPELINE -->
+  <g transform="translate(640, 160)">
+    <rect width="255" height="390" rx="14" fill="url(#cardGradDark)" stroke="#8b5cf6" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="255" height="38" rx="14" fill="#3b0764" fill-opacity="0.35"/>
+    <circle cx="20" cy="19" r="6" fill="#8b5cf6"/>
+    <text x="36" y="23" fill="#c084fc" font-size="12" font-weight="700" letter-spacing="0.5">2-STAGE RETRIEVAL ENGINE</text>
+
+    <!-- Stage 1: Vector Store -->
+    <g transform="translate(15, 55)">
+      <rect width="225" height="120" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.2" filter="url(#glowPurple)"/>
+      <div xmlns="http://www.w3.org/1999/xhtml"></div>
+      <text x="14" y="24" fill="#c084fc" font-size="11" font-weight="700">Stage 1: Dense Vector Retrieval</text>
+      <text x="14" y="44" fill="#ffffff" font-size="11" font-weight="600">ChromaDB Vector Store</text>
+      <text x="14" y="60" fill="#94a3b8" font-size="9.5">Embedding: </text>
+      <text x="75" y="60" fill="#34d399" font-size="9.5" font-family="monospace">all-MiniLM-L6-v2</text>
+      <text x="14" y="76" fill="#94a3b8" font-size="9.5">Dimension: 384d Dense Space</text>
+      <text x="14" y="92" fill="#94a3b8" font-size="9.5">Candidate Generation: </text>
+      <text x="135" y="92" fill="#f59e0b" font-size="9.5" font-weight="700">Top-40 (k=40)</text>
+      <text x="14" y="108" fill="#64748b" font-size="8.5">Bi-Encoder Cosine Fast Pruning</text>
+    </g>
+
+    <!-- Transfer Arrow -->
+    <path d="M 127 178 L 127 198" fill="none" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    <text x="175" y="190" fill="#c084fc" font-size="9" font-family="monospace">Top 40 Candidates</text>
+
+    <!-- Stage 2: Cross-Encoder Re-ranker -->
+    <g transform="translate(15, 202)">
+      <rect width="225" height="172" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2" filter="url(#glowAmber)"/>
+      <text x="14" y="24" fill="#f59e0b" font-size="11" font-weight="700">Stage 2: Cross-Encoder Reranker</text>
+      <text x="14" y="44" fill="#ffffff" font-size="11" font-weight="600">ms-marco-MiniLM-L-6-v2</text>
+      <text x="14" y="62" fill="#94a3b8" font-size="9.5">Joint Attention: </text>
+      <text x="95" y="62" fill="#38bdf8" font-size="9.5" font-family="monospace">[Query, Passage]</text>
+      
+      <!-- Key Advantage Box -->
+      <rect x="12" y="74" width="201" height="84" rx="6" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+      <text x="20" y="92" fill="#34d399" font-size="9" font-weight="600">Why Cross-Encoder?</text>
+      <text x="20" y="108" fill="#94a3b8" font-size="8.5">• Full token-level cross-attention</text>
+      <text x="20" y="122" fill="#94a3b8" font-size="8.5">• Fixes Bi-Encoder representation loss</text>
+      <text x="20" y="136" fill="#94a3b8" font-size="8.5">• Re-ranks Top-40 down to Best 10</text>
+      <text x="20" y="150" fill="#f59e0b" font-size="8.5" font-weight="600">Boosts Semantic Precision</text>
+    </g>
+  </g>
+
+  <!-- Arrow Retrieval -> Tool 2 Emotion & Genre -->
+  <path d="M 895 240 L 950 240" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <text x="922" y="230" fill="#f59e0b" font-size="9" font-family="monospace" text-anchor="middle">Ranked</text>
+
+  <!-- STEP 4: EMOTION & GENRE FILTER (TOOL 2) -->
+  <g transform="translate(955, 160)">
+    <rect width="185" height="390" rx="14" fill="url(#cardGradDark)" stroke="#f43f5e" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="185" height="38" rx="14" fill="#4c0519" fill-opacity="0.35"/>
+    <circle cx="20" cy="19" r="6" fill="#f43f5e"/>
+    <text x="36" y="23" fill="#fb7185" font-size="11" font-weight="700" letter-spacing="0.5">EMOTION &amp; GENRE</text>
+
+    <!-- Tool 2 Box -->
+    <g transform="translate(12, 55)">
+      <rect width="161" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1"/>
+      <text x="80" y="22" fill="#fb7185" font-size="10.5" font-weight="700" text-anchor="middle">Tool 2 (Dynamic)</text>
+      <text x="80" y="38" fill="#ffffff" font-size="10" font-weight="600" text-anchor="middle">filter_by_emotion()</text>
+      <text x="80" y="50" fill="#94a3b8" font-size="8.5" text-anchor="middle">Contextual Tone Sorter</text>
+    </g>
+
+    <!-- 5 Emotional Dimensions -->
+    <g transform="translate(12, 126)">
+      <rect width="161" height="142" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="20" fill="#fb7185" font-size="10" font-weight="700">5 Tone Dimensions</text>
+      <text x="14" y="32" fill="#94a3b8" font-size="8">DistilRoBERTa Probability:</text>
+
+      <!-- Emotion Bars -->
+      <g transform="translate(14, 40)">
+        <text x="0" y="10" fill="#e2e8f0" font-size="8.5">Joy / Happy</text>
+        <rect x="68" y="3" width="70" height="8" rx="3" fill="#1e293b"/>
+        <rect x="68" y="3" width="58" height="8" rx="3" fill="#10b981"/>
+
+        <text x="0" y="28" fill="#e2e8f0" font-size="8.5">Suspense / Fear</text>
+        <rect x="68" y="21" width="70" height="8" rx="3" fill="#1e293b"/>
+        <rect x="68" y="21" width="64" height="8" rx="3" fill="#f59e0b"/>
+
+        <text x="0" y="46" fill="#e2e8f0" font-size="8.5">Sadness</text>
+        <rect x="68" y="39" width="70" height="8" rx="3" fill="#1e293b"/>
+        <rect x="68" y="39" width="46" height="8" rx="3" fill="#38bdf8"/>
+
+        <text x="0" y="64" fill="#e2e8f0" font-size="8.5">Surprise</text>
+        <rect x="68" y="57" width="70" height="8" rx="3" fill="#1e293b"/>
+        <rect x="68" y="57" width="38" height="8" rx="3" fill="#a78bfa"/>
+
+        <text x="0" y="82" fill="#e2e8f0" font-size="8.5">Anger</text>
+        <rect x="68" y="75" width="70" height="8" rx="3" fill="#1e293b"/>
+        <rect x="68" y="75" width="25" height="8" rx="3" fill="#f43f5e"/>
+      </g>
+    </g>
+
+    <!-- Genre Box -->
+    <g transform="translate(12, 278)">
+      <rect width="161" height="96" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="20" fill="#34d399" font-size="10" font-weight="700">Zero-Shot Genres</text>
+      <text x="14" y="34" fill="#94a3b8" font-size="8.5">Inferred Missing Tags:</text>
+      <text x="14" y="50" fill="#e2e8f0" font-size="8.5">• Fiction / Sci-Fi</text>
+      <text x="14" y="64" fill="#e2e8f0" font-size="8.5">• Mystery / Thriller</text>
+      <text x="14" y="78" fill="#e2e8f0" font-size="8.5">• Philosophy / History</text>
+    </g>
+  </g>
+
+  <!-- Return Flow Arrow: Final Recommendations back to Gradio UI -->
+  <path d="M 1047 550 L 1047 575 L 165 575 L 165 400 L 165 375" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowEmerald)"/>
+  <text x="590" y="592" fill="#34d399" font-size="11" font-weight="600" text-anchor="middle">Autonomous Return Flow: Ranked Books + Reasoned Explanations delivered to User Interface</text>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: OFFLINE NLP DATA PIPELINE       -->
+  <!-- ========================================== -->
+  <g transform="translate(60, 615)">
+    <rect width="1080" height="155" rx="14" fill="url(#cardGradDark)" stroke="#334155" stroke-width="1.2" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="1080" height="34" rx="14" fill="#1e293b" fill-opacity="0.6"/>
+    <circle cx="20" cy="17" r="5" fill="#f59e0b"/>
+    <text x="35" y="21" fill="#f59e0b" font-size="11" font-weight="700" letter-spacing="0.5">OFFLINE AUTOMATED DATA ENRICHMENT PIPELINE (7,000+ BOOKS)</text>
+
+    <!-- Stage A: Raw Dataset -->
+    <g transform="translate(25, 48)">
+      <rect width="210" height="88" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="24" fill="#ffffff" font-size="11" font-weight="700">1. Raw Catalog Ingestion</text>
+      <text x="15" y="42" fill="#94a3b8" font-size="9">• 7,000+ Raw Book Records</text>
+      <text x="15" y="58" fill="#94a3b8" font-size="9">• Missing Genres &amp; Sparse Tags</text>
+      <text x="15" y="74" fill="#e2e8f0" font-size="9" font-family="monospace">books.csv / cleaned.csv</text>
+    </g>
+
+    <!-- Arrow A -> B -->
+    <path d="M 240 92 L 275 92" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+    <!-- Stage B: Zero-Shot Classification -->
+    <g transform="translate(285, 48)">
+      <rect width="235" height="88" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="15" y="24" fill="#38bdf8" font-size="11" font-weight="700">2. Zero-Shot Classification</text>
+      <text x="15" y="42" fill="#e2e8f0" font-size="9" font-family="monospace">facebook/bart-large-mnli</text>
+      <text x="15" y="58" fill="#94a3b8" font-size="9">• Infers missing genre metadata</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9">• Natural Language Inference (NLI)</text>
+    </g>
+
+    <!-- Arrow B -> C -->
+    <path d="M 525 92 L 560 92" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+    <!-- Stage C: Emotion Analysis -->
+    <g transform="translate(570, 48)">
+      <rect width="245" height="88" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1"/>
+      <text x="15" y="24" fill="#fb7185" font-size="11" font-weight="700">3. DistilRoBERTa Emotion Scorer</text>
+      <text x="15" y="42" fill="#e2e8f0" font-size="9" font-family="monospace">j-hartmann/emotion-english</text>
+      <text x="15" y="58" fill="#94a3b8" font-size="9">• Scores 5 tone probabilities per book</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9">• Enables sentiment-aware filtering</text>
+    </g>
+
+    <!-- Arrow C -> D -->
+    <path d="M 820 92 L 855 92" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+    <!-- Stage D: Vector Persist -->
+    <g transform="translate(865, 48)">
+      <rect width="190" height="88" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+      <text x="15" y="24" fill="#34d399" font-size="11" font-weight="700">4. ChromaDB Persistence</text>
+      <text x="15" y="42" fill="#e2e8f0" font-size="9" font-family="monospace">chroma_db/ persistent</text>
+      <text x="15" y="58" fill="#94a3b8" font-size="9">• Enriched embeddings stored</text>
+      <text x="15" y="74" fill="#34d399" font-size="9" font-weight="600">Ready for Instant Query</text>
+    </g>
+  </g>
+</svg>
