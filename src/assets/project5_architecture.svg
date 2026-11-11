@@ -1,0 +1,326 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%" style="background:#090d16; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </linearGradient>
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- Drop Shadows & Glows -->
+    <filter id="glowBlue" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#3b82f6" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glowEmerald" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#10b981" flood-opacity="0.25"/>
+    </filter>
+    <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.25"/>
+    </filter>
+    <filter id="shadowCard" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowBlue" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowEmerald" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#34d399"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrowRose" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#f87171"/>
+    </marker>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="820" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <g opacity="0.06">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+    </pattern>
+    <rect width="1200" height="820" fill="url(#grid)"/>
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(60, 45)">
+    <rect x="0" y="0" width="180" height="26" rx="13" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="90" y="17" fill="#60a5fa" font-size="12" font-weight="600" font-family="monospace" text-anchor="middle" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+    
+    <text x="0" y="58" fill="#ffffff" font-size="24" font-weight="700">Enterprise Loan Management System (LMS)</text>
+    <text x="0" y="80" fill="#94a3b8" font-size="14">4-Stage Borrower Wizard • Server BRE Engine • Role-Guarded Operations Modules (Sales, Sanction, Disbursement, Collection)</text>
+  </g>
+
+  <!-- Top Badges / KPI Highlights -->
+  <g transform="translate(720, 42)">
+    <g transform="translate(0, 0)">
+      <rect width="130" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="65" y="18" fill="#38bdf8" font-size="14" font-weight="700" text-anchor="middle">&lt; 15 ms</text>
+      <text x="65" y="32" fill="#94a3b8" font-size="10" text-anchor="middle">BRE Engine Latency</text>
+    </g>
+    <g transform="translate(145, 0)">
+      <rect width="130" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="65" y="18" fill="#34d399" font-size="14" font-weight="700" text-anchor="middle">100% RBAC</text>
+      <text x="65" y="32" fill="#94a3b8" font-size="10" text-anchor="middle">Guarded Endpoints</text>
+    </g>
+    <g transform="translate(290, 0)">
+      <rect width="150" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="75" y="18" fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle">4 Finite Stages</text>
+      <text x="75" y="32" fill="#94a3b8" font-size="10" text-anchor="middle">Lifecycle State Machine</text>
+    </g>
+  </g>
+
+  <!-- ==================================================== -->
+  <!-- SECTION 1: BORROWER APPLICATION JOURNEY & BRE ENGINE -->
+  <!-- ==================================================== -->
+  <g transform="translate(60, 155)">
+    <!-- Container Box -->
+    <rect width="520" height="385" rx="14" fill="url(#cardGradDark)" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="520" height="38" rx="14" fill="#1e3a8a" fill-opacity="0.3"/>
+    <circle cx="24" cy="19" r="6" fill="#3b82f6"/>
+    <text x="40" y="23" fill="#60a5fa" font-size="13" font-weight="700" letter-spacing="0.5">BORROWER APPLICATION JOURNEY &amp; BRE ENGINE</text>
+
+    <!-- Step 1: Auth & Registration -->
+    <g transform="translate(25, 55)">
+      <rect width="140" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="70" y="24" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">1. Borrower Auth</text>
+      <text x="70" y="42" fill="#94a3b8" font-size="10" text-anchor="middle">JWT + bcrypt Hashing</text>
+      <text x="70" y="55" fill="#64748b" font-size="9" text-anchor="middle">Role: 'Borrower' Token</text>
+    </g>
+
+    <!-- Arrow Step 1 -> Step 2 -->
+    <path d="M 165 87 L 200 87" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+    <!-- Step 2: Personal Details & BRE Engine -->
+    <g transform="translate(210, 52)">
+      <rect width="180" height="72" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5" filter="url(#glowEmerald)"/>
+      <text x="90" y="22" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">2. Server BRE Engine</text>
+      <text x="90" y="38" fill="#34d399" font-size="10" font-weight="600" text-anchor="middle">Rule Validation Pipeline</text>
+      <text x="90" y="52" fill="#94a3b8" font-size="9" text-anchor="middle">Age 23-50 • Min ₹25k Salary</text>
+      <text x="90" y="65" fill="#94a3b8" font-size="9" text-anchor="middle">PAN Regex: ^[A-Z]{5}[0-9]{4}[A-Z]$</text>
+    </g>
+
+    <!-- BRE Gate Callouts -->
+    <path d="M 390 75 L 425 75" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrowRose)"/>
+    <g transform="translate(435, 55)">
+      <rect width="70" height="40" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+      <text x="35" y="18" fill="#fca5a5" font-size="10" font-weight="700" text-anchor="middle">Fail BRE</text>
+      <text x="35" y="32" fill="#f87171" font-size="9" text-anchor="middle">Instant Block</text>
+    </g>
+
+    <!-- Step 3: Document Upload -->
+    <path d="M 300 124 L 300 155 L 145 155 L 145 175" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrowEmerald)"/>
+    <text x="210" y="150" fill="#34d399" font-size="10" font-weight="600">BRE Passed ✓</text>
+
+    <g transform="translate(25, 185)">
+      <rect width="215" height="75" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="107" y="24" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">3. Salary Slip Pipeline</text>
+      <text x="107" y="42" fill="#94a3b8" font-size="10" text-anchor="middle">Multer Stream Buffer Upload</text>
+      <text x="107" y="56" fill="#a78bfa" font-size="9" text-anchor="middle">Cloudinary Storage (PDF, PNG, JPG)</text>
+      <text x="107" y="68" fill="#64748b" font-size="8.5" text-anchor="middle">Max 5MB Document Size</text>
+    </g>
+
+    <!-- Arrow Step 3 -> Step 4 -->
+    <path d="M 240 222 L 275 222" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+    <!-- Step 4: Loan Config & SI Math -->
+    <g transform="translate(285, 180)">
+      <rect width="210" height="85" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" filter="url(#glowAmber)"/>
+      <text x="105" y="24" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">4. Loan Config &amp; SI Math</text>
+      <text x="105" y="42" fill="#fbbf24" font-size="10.5" font-family="monospace" text-anchor="middle">SI = (P × R × T) / 36500</text>
+      <text x="105" y="58" fill="#94a3b8" font-size="9" text-anchor="middle">Sliders: ₹50k - ₹500k | 30 - 365 Days</text>
+      <text x="105" y="73" fill="#34d399" font-size="9.5" font-weight="600" text-anchor="middle">Fixed 12% p.a. • Instant Repayment Calc</text>
+    </g>
+
+    <!-- Submit to Applied Status Footer -->
+    <g transform="translate(25, 290)">
+      <rect width="470" height="75" rx="8" fill="#182234" stroke="#334155" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="20" y="24" fill="#60a5fa" font-size="11" font-weight="700">Application Dispatch &amp; Pending State:</text>
+      <text x="20" y="44" fill="#cbd5e1" font-size="10">Submits payload to Express API  ⟶  Creates Loan record with initial status </text>
+      <text x="403" y="44" fill="#fbbf24" font-weight="700" font-family="monospace" font-size="11">'APPLIED'</text>
+      <text x="20" y="62" fill="#94a3b8" font-size="9.5">Applicant redirected to personal loan tracking portal with active loan ledger.</text>
+    </g>
+  </g>
+
+  <!-- ==================================================== -->
+  <!-- SECTION 2: 4-MODULE RBAC OPERATIONS DASHBOARD        -->
+  <!-- ==================================================== -->
+  <g transform="translate(620, 155)">
+    <!-- Container Box -->
+    <rect width="520" height="385" rx="14" fill="url(#cardGradDark)" stroke="#8b5cf6" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="520" height="38" rx="14" fill="#4c1d95" fill-opacity="0.25"/>
+    <circle cx="24" cy="19" r="6" fill="#a78bfa"/>
+    <text x="40" y="23" fill="#c4b5fd" font-size="13" font-weight="700" letter-spacing="0.5">4-TIER RBAC EXECUTIVE OPERATIONS DASHBOARD</text>
+
+    <!-- Module 1: Sales Module -->
+    <g transform="translate(25, 55)">
+      <rect width="225" height="95" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="0" y="0" width="225" height="24" rx="8" fill="#0284c7" fill-opacity="0.2"/>
+      <text x="15" y="16" fill="#38bdf8" font-size="11" font-weight="700">1. SALES MODULE</text>
+      <text x="180" y="16" fill="#94a3b8" font-size="9">Sales, Admin</text>
+      <text x="15" y="44" fill="#e2e8f0" font-size="10.5" font-weight="600">Lead Sourcing &amp; Tracking</text>
+      <text x="15" y="60" fill="#94a3b8" font-size="9.5">• Tracks pre-application registered users</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9.5">• Live loan progress &amp; profile monitor</text>
+      <text x="15" y="87" fill="#64748b" font-size="8.5">Stage: Pre-Application Ingestion</text>
+    </g>
+
+    <!-- Module 2: Sanction Module -->
+    <g transform="translate(270, 55)">
+      <rect width="225" height="95" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+      <rect x="0" y="0" width="225" height="24" rx="8" fill="#d97706" fill-opacity="0.2"/>
+      <text x="15" y="16" fill="#fbbf24" font-size="11" font-weight="700">2. SANCTION MODULE</text>
+      <text x="160" y="16" fill="#94a3b8" font-size="9">Sanction, Admin</text>
+      <text x="15" y="44" fill="#e2e8f0" font-size="10.5" font-weight="600">Underwriting &amp; Decision</text>
+      <text x="15" y="60" fill="#94a3b8" font-size="9.5">• Inspects borrower salary slips</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9.5">• Approve / Reject with logged reason</text>
+      <text x="15" y="87" fill="#fbbf24" font-weight="600" font-size="8.5">APPLIED ⟶ SANCTIONED / REJECTED</text>
+    </g>
+
+    <!-- Module 3: Disbursement Module -->
+    <g transform="translate(25, 168)">
+      <rect width="225" height="95" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="0" y="0" width="225" height="24" rx="8" fill="#059669" fill-opacity="0.2"/>
+      <text x="15" y="16" fill="#34d399" font-size="11" font-weight="700">3. DISBURSEMENT MODULE</text>
+      <text x="145" y="16" fill="#94a3b8" font-size="9">Disbursement, Admin</text>
+      <text x="15" y="44" fill="#e2e8f0" font-size="10.5" font-weight="600">Fund Release &amp; Liquidity</text>
+      <text x="15" y="60" fill="#94a3b8" font-size="9.5">• Confirms sanctioned capital release</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9.5">• Initiates repayment clock &amp; terms</text>
+      <text x="15" y="87" fill="#34d399" font-weight="600" font-size="8.5">SANCTIONED ⟶ DISBURSED</text>
+    </g>
+
+    <!-- Module 4: Collection Module -->
+    <g transform="translate(270, 168)">
+      <rect width="225" height="95" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1.2"/>
+      <rect x="0" y="0" width="225" height="24" rx="8" fill="#6d28d9" fill-opacity="0.2"/>
+      <text x="15" y="16" fill="#c4b5fd" font-size="11" font-weight="700">4. COLLECTION MODULE</text>
+      <text x="155" y="16" fill="#94a3b8" font-size="9">Collection, Admin</text>
+      <text x="15" y="44" fill="#e2e8f0" font-size="10.5" font-weight="600">Repayment &amp; Reconciliation</text>
+      <text x="15" y="60" fill="#94a3b8" font-size="9.5">• UTR duplicate check &amp; verification</text>
+      <text x="15" y="74" fill="#94a3b8" font-size="9.5">• Balance deduction &amp; auto-close</text>
+      <text x="15" y="87" fill="#c4b5fd" font-weight="600" font-size="8.5">DISBURSED ⟶ CLOSED</text>
+    </g>
+
+    <!-- Role Guard Middleware Footer -->
+    <g transform="translate(25, 280)">
+      <rect width="470" height="85" rx="8" fill="#182234" stroke="#334155" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="20" y="24" fill="#a78bfa" font-size="11" font-weight="700">Dual-Layer Security Guard (Frontend + Backend):</text>
+      <text x="20" y="44" fill="#cbd5e1" font-size="10">Backend Express Middleware verifies JWT claim &amp; role matching required module.</text>
+      <text x="20" y="60" fill="#fca5a5" font-size="9.5">Unauthorized role access triggers </text>
+      <text x="175" y="60" fill="#ef4444" font-weight="700" font-family="monospace" font-size="10">HTTP 403 Forbidden</text>
+      <text x="295" y="60" fill="#fca5a5" font-size="9.5"> and halts payload execution.</text>
+      <text x="20" y="75" fill="#94a3b8" font-size="9">Frontend guards tab views dynamically according to active session matrix.</text>
+    </g>
+  </g>
+
+  <!-- ==================================================== -->
+  <!-- SECTION 3: FINITE STATE MACHINE & EVALUATOR MATRIX   -->
+  <!-- ==================================================== -->
+  <g transform="translate(60, 560)">
+    <!-- Container Box -->
+    <rect width="1080" height="215" rx="14" fill="url(#cardGradDark)" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.5" filter="url(#shadowCard)"/>
+    <rect x="0" y="0" width="1080" height="38" rx="14" fill="#064e3b" fill-opacity="0.25"/>
+    <circle cx="24" cy="19" r="6" fill="#10b981"/>
+    <text x="40" y="23" fill="#34d399" font-size="13" font-weight="700" letter-spacing="0.5">LENDING LIFECYCLE FINITE STATE MACHINE &amp; EVALUATOR 1-CLICK MATRIX</text>
+
+    <!-- State Machine Horizontal Flow -->
+    <g transform="translate(30, 60)">
+      <!-- Stage 1: APPLIED -->
+      <g transform="translate(0, 0)">
+        <rect width="130" height="52" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+        <text x="65" y="22" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">APPLIED</text>
+        <text x="65" y="38" fill="#94a3b8" font-size="9" text-anchor="middle">Loan Config Submitted</text>
+      </g>
+
+      <path d="M 130 26 L 165 26" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+      <!-- Stage 2: SANCTIONED -->
+      <g transform="translate(175, 0)">
+        <rect width="145" height="52" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+        <text x="72" y="22" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">SANCTIONED</text>
+        <text x="72" y="38" fill="#94a3b8" font-size="9" text-anchor="middle">Underwriter Approved</text>
+      </g>
+
+      <!-- Alternative Rejection Branch -->
+      <path d="M 247 52 L 247 78 L 290 78" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrowRose)"/>
+      <g transform="translate(300, 62)">
+        <rect width="115" height="34" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+        <text x="57" y="21" fill="#fca5a5" font-size="10" font-weight="700" text-anchor="middle">REJECTED (Terminal)</text>
+      </g>
+
+      <path d="M 320 26 L 365 26" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+      <!-- Stage 3: DISBURSED -->
+      <g transform="translate(375, 0)">
+        <rect width="145" height="52" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+        <text x="72" y="22" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">DISBURSED</text>
+        <text x="72" y="38" fill="#94a3b8" font-size="9" text-anchor="middle">Capital Released</text>
+      </g>
+
+      <path d="M 520 26 L 565 26" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrowEmerald)"/>
+
+      <!-- Stage 4: CLOSED -->
+      <g transform="translate(575, 0)">
+        <rect width="130" height="52" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1.2"/>
+        <text x="65" y="22" fill="#c4b5fd" font-size="11" font-weight="700" text-anchor="middle">CLOSED</text>
+        <text x="65" y="38" fill="#94a3b8" font-size="9" text-anchor="middle">Repayment Verified</text>
+      </g>
+    </g>
+
+    <!-- Evaluator 1-Click Role Matrix on Right -->
+    <g transform="translate(775, 55)">
+      <rect width="280" height="135" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <rect x="0" y="0" width="280" height="26" rx="10" fill="#1e293b"/>
+      <text x="140" y="18" fill="#38bdf8" font-size="10.5" font-weight="700" font-family="monospace" text-anchor="middle">EVALUATOR QUICK-SWITCHER MATRIX</text>
+      
+      <g transform="translate(15, 36)">
+        <text x="0" y="15" fill="#f1f5f9" font-size="10" font-weight="600">Admin:</text>
+        <text x="65" y="15" fill="#94a3b8" font-size="9.5" font-family="monospace">admin@lms.com (All Modules)</text>
+
+        <text x="0" y="33" fill="#f1f5f9" font-size="10" font-weight="600">Sales:</text>
+        <text x="65" y="33" fill="#94a3b8" font-size="9.5" font-family="monospace">sales@lms.com (Leads)</text>
+
+        <text x="0" y="51" fill="#f1f5f9" font-size="10" font-weight="600">Sanction:</text>
+        <text x="65" y="51" fill="#94a3b8" font-size="9.5" font-family="monospace">sanction@lms.com (Approve)</text>
+
+        <text x="0" y="69" fill="#f1f5f9" font-size="10" font-weight="600">Disburse:</text>
+        <text x="65" y="69" fill="#94a3b8" font-size="9.5" font-family="monospace">disbursement@lms.com</text>
+
+        <text x="0" y="87" fill="#f1f5f9" font-size="10" font-weight="600">Collection:</text>
+        <text x="65" y="87" fill="#94a3b8" font-size="9.5" font-family="monospace">collection@lms.com (UTR)</text>
+      </g>
+    </g>
+
+    <!-- Footnote about MongoDB & Atlas persistence -->
+    <g transform="translate(30, 155)">
+      <text x="0" y="15" fill="#94a3b8" font-size="10">• <strong style="fill:#34d399">Database Layer:</strong> MongoDB Atlas clustered document schemas for Users, Loans, and Payments with atomic status transitions.</text>
+      <text x="0" y="32" fill="#94a3b8" font-size="10">• <strong style="fill:#38bdf8">Auditing &amp; Traceability:</strong> Every loan record maintains strict timestamps, executive approval IDs, and payment UTR records.</text>
+    </g>
+  </g>
+</svg>

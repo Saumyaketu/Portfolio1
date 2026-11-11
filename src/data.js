@@ -41,6 +41,20 @@ const bookImages = preferredBookOrder
   .concat(Object.keys(bookGlob).filter(key => !preferredBookOrder.includes(key)))
   .map(key => bookGlob[key]);
 
+const lmsGlob = import.meta.glob('./assets/project5*.{png,svg,gif}', { eager: true, import: 'default' });
+const preferredLmsOrder = [
+  './assets/project5_architecture.svg',
+  './assets/project5a.png',
+  './assets/project5b.png',
+  './assets/project5c.png',
+  './assets/project5d.png',
+  './assets/project5e.png'
+];
+const lmsImages = preferredLmsOrder
+  .filter(key => lmsGlob[key])
+  .concat(Object.keys(lmsGlob).filter(key => !preferredLmsOrder.includes(key)))
+  .map(key => lmsGlob[key]);
+
 const DATA = {
   personal: {
     name: "Saumyaketu Chand Gupta",
@@ -187,6 +201,50 @@ const DATA = {
     },
     {
       id: 3,
+      topic: "Full Stack FinTech / RBAC Systems",
+      title: "Loan Management System (LMS) & Automated BRE Underwriting",
+      tagline: "An enterprise-grade lending platform with an automated 4-step borrower wizard, server-side Business Rule Engine (BRE) underwriting, and a 4-tier role-guarded executive operations cockpit.",
+      tech: [
+        "Next.js 14 (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB Atlas",
+        "Cloudinary",
+        "Multer",
+        "JWT & RBAC",
+        "bcryptjs",
+        "Lucide React"
+      ],
+      metrics: [
+        { label: "BRE Latency", value: "< 15 ms", detail: "Server Rule Engine" },
+        { label: "RBAC Security", value: "100% Guarded", detail: "Dual-Tier 403 Forbidden" },
+        { label: "Doc Storage", value: "0 Disk Stash", detail: "Multer Piped to Cloudinary" },
+        { label: "Lifecycle FSM", value: "4 Stages", detail: "Deterministic State Machine" }
+      ],
+      description: "A production-grade, RBI-compliant full-stack personal loan origination and lifecycle management platform featuring automated server-side underwriting, live Simple Interest math, off-cluster document streaming, and strict role-based operations modules.",
+      points: [
+        "Automated Business Rule Engine (BRE): Engineered an independent server-side underwriting engine that validates applicant age (23-50 yrs), Indian PAN regex (^[A-Z]{5}[0-9]{4}[A-Z]{1}$), minimum net income (₹25,000/mo), and employment mode before authorizing application dispatch.",
+        "4-Tier RBAC Executive Cockpit: Implemented granular Role-Based Access Control guarded on both frontend routes and Express middleware (Sales lead tracking, Sanction credit underwriting with reason logging, Disbursement fund execution, and Collection repayment reconciliation).",
+        "Live Financial Math & Dynamic Sliders: Built an interactive loan configurator calculating daily accrued Simple Interest (SI = P × R × T / 36500 at 12% p.a.) and total liability with instant client-side feedback across customizable principal (₹50k-₹500k) and tenure (30-365 days).",
+        "Zero-Disk Document Streaming: Integrated Multer in-memory buffers piped directly into Cloudinary CDN for salary slips (PDF, PNG, JPG up to 5MB), eliminating server disk exhaustion and ensuring encrypted, secure financial document archiving.",
+        "Idempotent Collections & UTR Ledger: Developed a payment recording ledger with strict unique UTR (Unique Transaction Reference) indexing, preventing duplicate credits and automating loan closure once outstanding balance hits ₹0.",
+        "Evaluator 1-Click Testing Matrix: Architected an embedded evaluator modal allowing interviewers to instantly switch active sessions between 6 pre-seeded accounts (Admin, Sales, Sanction, Disbursement, Collection, Borrower) without manual logouts or session clearing."
+      ],
+      caseStudy: {
+        type: "lms",
+        engineeringChallenge: "Standard tutorial lending platforms lack transactional integrity and regulatory safeguards—allowing applicants to bypass underwriting via client DOM manipulation, permitting unauthorized loan disbursements, and lacking duplicate transaction protection. The goal was to architect an end-to-end FinTech lending platform enforcing tamper-proof server-side BRE checks, deterministic lifecycle state machine transitions (APPLIED ➔ SANCTIONED ➔ DISBURSED ➔ CLOSED), and zero-trust RBAC across 4 executive divisions."
+      },
+      testModeNotice: "Includes built-in Evaluator Quick Switcher: click the floating 'Evaluator Credentials' button to instantly test Admin, Sales, Sanction, Disbursement, Collection, and Borrower access with 1 click.",
+      images: lmsImages,
+      links: {
+        live: "https://saumyaketu-lms.vercel.app",
+        github: "https://github.com/Saumyaketu/LMS"
+      }
+    },
+    {
+      id: 4,
       topic: "Agentic AI / Semantic Retrieval",
       title: "Agentic Book Recommender & Semantic Discovery Engine",
       tagline: "Autonomous ReAct agent powered by LangGraph, ChromaDB, and local Llama 3.2 for conversational, emotion-aware book recommendations with cross-encoder re-ranking.",
@@ -229,7 +287,7 @@ const DATA = {
       }
     },
     {
-      id: 4,
+      id: 5,
       topic: "Full Stack",
       title: "Notes App",
       tech: ["MERN", "JWT", "Cloudinary", "Vite", "Tailwind"],

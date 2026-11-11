@@ -10,10 +10,50 @@ import {
   Cpu,
   Search,
   Bot,
-  Database
+  Database,
+  Layers,
+  FileCheck
 } from "lucide-react";
 
-export default function CaseStudyMetrics({ isVideoProject, isBookProject }) {
+export default function CaseStudyMetrics({ isVideoProject, isBookProject, isLmsProject }) {
+  if (isLmsProject) {
+    return (
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-6 bg-slate-950/60 border-b border-slate-800">
+        <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 text-sky-400 text-xs font-mono mb-1">
+            <Zap size={14} /> BRE ENGINE LATENCY
+          </div>
+          <div className="text-2xl font-bold text-white font-mono">&lt; 15 ms</div>
+          <div className="text-slate-400 text-xs mt-0.5">Automated Underwriting</div>
+        </div>
+
+        <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-mono mb-1">
+            <ShieldCheck size={14} /> RBAC ENFORCEMENT
+          </div>
+          <div className="text-2xl font-bold text-white font-mono">100% Guarded</div>
+          <div className="text-slate-400 text-xs mt-0.5">Dual-Tier 403 Forbidden</div>
+        </div>
+
+        <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 text-amber-400 text-xs font-mono mb-1">
+            <Layers size={14} /> FINITE LIFECYCLE
+          </div>
+          <div className="text-2xl font-bold text-white font-mono">4 Discrete States</div>
+          <div className="text-slate-400 text-xs mt-0.5">APPLIED ➔ CLOSED</div>
+        </div>
+
+        <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 text-purple-400 text-xs font-mono mb-1">
+            <FileCheck size={14} /> CLOUD DOC PIPELINE
+          </div>
+          <div className="text-2xl font-bold text-white font-mono">0 Disk Stash</div>
+          <div className="text-slate-400 text-xs mt-0.5">Multer Piped to Cloudinary</div>
+        </div>
+      </div>
+    );
+  }
+
   if (isVideoProject) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-6 bg-slate-950/60 border-b border-slate-800">

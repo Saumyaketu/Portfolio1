@@ -6,18 +6,22 @@ import CaseStudyMetrics from "./case-study/CaseStudyMetrics";
 import VideoCaseStudy from "./case-study/VideoCaseStudy";
 import UrlShortenerCaseStudy from "./case-study/UrlShortenerCaseStudy";
 import BookRecommenderCaseStudy from "./case-study/BookRecommenderCaseStudy";
+import LmsCaseStudy from "./case-study/LmsCaseStudy";
 
 export default function CaseStudyModal({ project, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("architecture");
 
   const isVideoProject =
-    project?.id === 1 ||
     project?.caseStudy?.type === "video" ||
     project?.title?.toLowerCase().includes("video") ||
     project?.title?.toLowerCase().includes("youtube");
 
+  const isLmsProject =
+    project?.caseStudy?.type === "lms" ||
+    project?.title?.toLowerCase().includes("loan") ||
+    project?.title?.toLowerCase().includes("lms");
+
   const isBookProject =
-    project?.id === 4 ||
     project?.caseStudy?.type === "book" ||
     project?.title?.toLowerCase().includes("book") ||
     project?.title?.toLowerCase().includes("recommender");
@@ -74,6 +78,8 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
                 <span className="text-slate-500 text-xs font-mono">
                   • {isVideoProject
                     ? "Real-Time Streaming & P2P Topology"
+                    : isLmsProject
+                    ? "Enterprise Lending & 4-Tier RBAC Operations Engine"
                     : isBookProject
                     ? "Autonomous ReAct Agent & 2-Stage Retrieval"
                     : "Enterprise-Grade Distributed Systems"}
@@ -119,7 +125,7 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
           </div>
 
           {/* Quick Metrics Bar */}
-          <CaseStudyMetrics isVideoProject={isVideoProject} isBookProject={isBookProject} />
+          <CaseStudyMetrics isVideoProject={isVideoProject} isBookProject={isBookProject} isLmsProject={isLmsProject} />
 
           {/* Navigation Tabs */}
           <div className="flex border-b border-slate-800 px-6 bg-slate-900/50">
@@ -159,6 +165,8 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
           <div className="p-6 md:p-8 space-y-8 flex-1">
             {isVideoProject ? (
               <VideoCaseStudy activeTab={activeTab} project={project} />
+            ) : isLmsProject ? (
+              <LmsCaseStudy activeTab={activeTab} project={project} />
             ) : isBookProject ? (
               <BookRecommenderCaseStudy activeTab={activeTab} project={project} />
             ) : (
@@ -171,6 +179,8 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
             <div className="text-xs text-slate-400 font-mono">
               {isVideoProject
                 ? "Next.js 16 (React 19) • WebRTC mesh • Socket.io drift sync < 250ms"
+                : isLmsProject
+                ? "Next.js 14 App Router • TypeScript • Express REST API • Role-Based Access Control"
                 : isBookProject
                 ? "LangGraph ReAct • ChromaDB + Cross-Encoder • 100% Local Inference (Ollama)"
                 : "Docker compose ready • Tested with 300+ concurrent requests"}
