@@ -1,50 +1,61 @@
+import React from "react";
 import SectionTitle from "./SectionTitle";
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Experience({ data }) {
+export default function Experience({ data, isStandalonePage = false }) {
   return (
-    <section id="experience" className="py-24">
-      <SectionTitle>Experience</SectionTitle>
+    <section id="experience" className={`${isStandalonePage ? "py-10 md:py-16" : "py-24"}`}>
+      <SectionTitle
+        badge="Career &amp; Industry"
+        subtitle="Hands-on software development and data science internships solving real-world challenges."
+      >
+        Experience
+      </SectionTitle>
 
-      <div className="relative border-l border-slate-800 ml-3 md:ml-6 space-y-12">
+      <div className="relative border-l border-slate-800 ml-3 md:ml-6 space-y-10 max-w-4xl">
         {data.experience.map((exp, idx) => (
           <motion.div 
             key={exp.id || idx}
-            className="relative pl-8 md:pl-12"
-            initial={{ opacity: 0, x: -50 }}
+            className="relative pl-7 md:pl-10"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
           >
-            <motion.div 
-              className="absolute -left-[5px] top-0 bg-slate-900 border-2 border-emerald-400 rounded-full p-1"
-            >
+            {/* Timeline Node */}
+            <div className="absolute -left-[17px] top-1.5 bg-slate-950 border-2 border-emerald-400 rounded-full p-1.5 shadow-md shadow-emerald-500/20">
               <Briefcase size={14} className="text-emerald-400" />
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="bg-slate-800/40 p-6 rounded border border-slate-700 hover:scale-102 hover:border-emerald-400/50 transition-colors"
-            >
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-4">
-                <h3 className="text-2xl font-bold text-white">
-                  {exp.role} <span className="text-emerald-400">@ {exp.company}</span>
-                </h3>
+            <div className="bg-slate-900/60 hover:bg-slate-900/90 p-6 md:p-8 rounded-2xl border border-slate-800 hover:border-emerald-500/40 transition-all duration-300 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                    {exp.role}{" "}
+                    <span className="text-emerald-400 font-semibold">@ {exp.company}</span>
+                  </h3>
+                </div>
                 
-                <div className="flex items-center gap-2 text-slate-400 bg-slate-900/50 px-3 py-1 rounded-full text-sm w-fit">
-                  <Calendar size={14} className="text-emerald-400" />
+                <div className="flex items-center gap-2 text-slate-400 bg-slate-950/80 border border-slate-800 px-3.5 py-1.5 rounded-full text-xs font-mono w-fit">
+                  <Calendar size={13} className="text-emerald-400" />
                   <span>{exp.period}</span>
                 </div>
               </div>
 
-              <p className="mb-4 text-slate-300">{exp.description}</p>
+              <p className="mb-4 text-slate-300 text-sm md:text-base leading-relaxed">
+                {exp.description}
+              </p>
 
-              <ul className="list-disc pl-5 space-y-1 text-slate-400 text-sm">
+              <ul className="space-y-2.5 text-slate-300 text-xs md:text-sm">
                 {exp.achievements.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i} className="flex items-start gap-2.5 leading-relaxed">
+                    <span className="text-emerald-400 font-bold mt-0.5">▹</span>
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </div>

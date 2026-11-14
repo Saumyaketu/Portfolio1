@@ -1,159 +1,173 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import SectionTitle from "./SectionTitle";
-import { Github, ExternalLink, ChevronLeft, ChevronRight, Layers, Zap, Maximize2 } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  Layers,
+  ArrowRight,
+  Eye,
+  Filter
+} from "lucide-react";
 import { motion } from "framer-motion";
 import CaseStudyModal from "./CaseStudyModal";
+import ProjectDetailModal from "./ProjectDetailModal";
 
-// Internal Carousel Component
-function ProjectCarousel({ images, title, onOpenCaseStudy, hasCaseStudy }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Projects({ data, isStandalonePage = false }) {
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [detailProject, setDetailProject] = useState(null);
+  const [caseStudyProject, setCaseStudyProject] = useState(null);
 
-  const prevSlide = (e) => {
-    e.stopPropagation();
-    const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+  const categories = [
+    { id: "all", label: "All Projects" },
+    { id: "realtime", label: "Real-Time & WebRTC", match: (p) => p.topic?.toLowerCase().includes("real-time") },
+    { id: "distributed", label: "Distributed Systems", match: (p) => p.topic?.toLowerCase().includes("distributed") },
+    { id: "fintech", label: "FinTech & RBAC", match: (p) => p.topic?.toLowerCase().includes("fintech") },
+    { id: "ai", label: "Agentic AI & NLP", match: (p) => p.topic?.toLowerCase().includes("ai") || p.topic?.toLowerCase().includes("nlp") }
+  ];
 
-  const nextSlide = (e) => {
-    e.stopPropagation();
-    const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToSlide = (slideIndex, e) => {
-    e.stopPropagation();
-    setCurrentIndex(slideIndex);
-  };
-
-  if (!images || images.length === 0) {
-    return (
-      <div className="bg-slate-800 rounded-xl h-64 md:h-full flex items-center justify-center text-slate-400 font-mono border border-slate-700 border-dashed">
-        No Images
-      </div>
-    );
-  }
-
-  const isCurrentSvg = typeof images[currentIndex] === "string" && images[currentIndex].includes(".svg");
-  const isCurrentGif = typeof images[currentIndex] === "string" && images[currentIndex].includes(".gif");
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "all") return data.projects;
+    const cat = categories.find((c) => c.id === activeCategory);
+    if (!cat || !cat.match) return data.projects;
+    return data.projects.filter(cat.match);
+  }, [activeCategory, data.projects]);
 
   return (
-    <div className="relative h-72 md:h-full min-h-[320px] w-full group overflow-hidden rounded-xl bg-slate-900 border border-slate-700/80 shadow-lg flex items-center justify-center">
-      {/* Image Renderer */}
-      <img
-        src={images[currentIndex]}
-        alt={`${title} screenshot ${currentIndex + 1}`}
-        className="w-full h-full object-contain p-2 duration-300 transition-all select-none"
-      />
+    <section id="projects" className={`${isStandalonePage ? "py-10 md:py-16" : "py-24"}`}>
+      <SectionTitle
+        badge="Engineering Portfolio"
+        subtitle="High-concurrency distributed systems, real-time WebRTC architectures, enterprise FinTech engines, and local Agentic AI workflows. Click any project to inspect full architecture details."
+      >
+        Featured Projects
+      </SectionTitle>
 
-      {/* Slide Index Badge */}
-      <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center gap-1.5 shadow-sm">
-        <span>{currentIndex + 1} / {images.length}</span>
-        {isCurrentSvg && (
-          <span className="text-emerald-400 font-semibold">• Architecture Flow</span>
-        )}
-        {isCurrentGif && (
-          <span className="text-amber-400 font-semibold">• Live Demo GIF</span>
-        )}
-      </div>
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap items-center gap-2 mb-10 pb-2">
+        <span className="text-xs font-mono text-slate-500 mr-2 flex items-center gap-1.5 hidden sm:inline-flex">
+          <Filter size={13} /> Filter:
+        </span>
+        {categories.map((cat) => {
+          const isActive = activeCategory === cat.id;
+          const count =
+            cat.id === "all"
+              ? data.projects.length
+              : data.projects.filter((p) => cat.match && cat.match(p)).length;
 
-      {/* Quick Deep-Dive Button on Image if Case Study exists */}
-      {hasCaseStudy && (
-        <button
-          onClick={onOpenCaseStudy}
-          className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 rounded-md bg-emerald-500/20 hover:bg-emerald-500/30 backdrop-blur-sm border border-emerald-500/40 text-emerald-300 text-xs font-mono flex items-center gap-1 cursor-pointer"
-          title="Open System Architecture Case Study"
-        >
-          <Maximize2 size={13} /> Deep Dive
-        </button>
-      )}
-
-      {/* Navigation Arrows */}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="hidden group-hover:flex items-center justify-center absolute top-1/2 -translate-y-1/2 left-3 w-9 h-9 rounded-full bg-slate-950/80 text-white cursor-pointer hover:bg-emerald-500 hover:text-slate-950 transition-all z-10 border border-slate-700"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="hidden group-hover:flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-3 w-9 h-9 rounded-full bg-slate-950/80 text-white cursor-pointer hover:bg-emerald-500 hover:text-slate-950 transition-all z-10 border border-slate-700"
-            aria-label="Next slide"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* Dots */}
-          <div className="flex justify-center items-center py-2 gap-1.5 w-full absolute bottom-2 z-10">
-            {images.map((_, slideIndex) => (
-              <button
-                key={slideIndex}
-                onClick={(e) => goToSlide(slideIndex, e)}
-                className={`cursor-pointer h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === slideIndex
-                    ? "bg-emerald-400 w-5 shadow-sm shadow-emerald-400/50"
-                    : "bg-slate-600 hover:bg-slate-400 w-2"
+          return (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
+                isActive
+                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm shadow-emerald-500/20"
+                  : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700"
+              }`}
+            >
+              <span>{cat.label}</span>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  isActive
+                    ? "bg-emerald-500/30 text-emerald-200"
+                    : "bg-slate-800 text-slate-500"
                 }`}
-                aria-label={`Go to slide ${slideIndex + 1}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
 
-export default function Projects({ data }) {
-  const [activeModalProject, setActiveModalProject] = useState(null);
+      {/* Projects Grid (Overview Cards) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        {filteredProjects.map((proj, idx) => {
+          const previewImage = proj.images?.[0];
+          const hasCaseStudy = Boolean(proj.caseStudy);
+          const topMetrics = proj.metrics ? proj.metrics.slice(0, 3) : [];
+          const visibleTech = proj.tech ? proj.tech.slice(0, 5) : [];
+          const extraTechCount = proj.tech ? proj.tech.length - visibleTech.length : 0;
+          const overviewText = proj.tagline || proj.description;
 
-  return (
-    <section id="projects" className="py-24">
-      <SectionTitle>Some Things I've Built</SectionTitle>
-
-      <div className="grid gap-24">
-        {data.projects.map((proj, i) => (
-          <motion.div
-            key={proj.id || i}
-            className={`flex flex-col md:flex-row gap-10 items-stretch ${
-              i % 2 ? "md:flex-row-reverse" : ""
-            }`}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.15 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Content Side */}
-            <div className="flex-1 flex flex-col justify-between">
+          return (
+            <motion.div
+              key={proj.id || idx}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="group bg-slate-900/70 hover:bg-slate-900/90 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-5 md:p-6 flex flex-col justify-between transition-all duration-300 shadow-lg hover:shadow-emerald-950/20"
+            >
               <div>
-                <p className="text-emerald-400 font-mono text-sm tracking-wide uppercase font-semibold mb-1">
-                  {proj.topic}
-                </p>
-                <h3 className="text-2xl md:text-3xl text-white font-bold mb-3 tracking-tight">
+                {/* Image Thumbnail / Preview */}
+                <div
+                  onClick={() => setDetailProject(proj)}
+                  className="relative h-52 sm:h-60 w-full overflow-hidden rounded-xl bg-slate-950 border border-slate-800 group-hover:border-slate-700 mb-5 flex items-center justify-center cursor-pointer transition-colors"
+                >
+                  {previewImage ? (
+                    <img
+                      src={previewImage}
+                      alt={proj.title}
+                      className="w-full h-full object-contain p-2 group-hover:scale-102 transition-transform duration-300 select-none"
+                    />
+                  ) : (
+                    <div className="text-slate-500 font-mono text-xs">
+                      No Media Preview
+                    </div>
+                  )}
+
+                  {/* Slide count / type badge */}
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center gap-1.5 shadow-sm">
+                    <span>{proj.images?.length || 0} media assets</span>
+                    {proj.images?.some((img) => typeof img === "string" && img.includes(".gif")) && (
+                      <span className="text-amber-400 font-semibold">• Live GIF</span>
+                    )}
+                    {proj.images?.some((img) => typeof img === "string" && img.includes(".svg")) && (
+                      <span className="text-emerald-400 font-semibold">• Architecture</span>
+                    )}
+                  </div>
+
+                  {/* Click to expand overlay hint */}
+                  <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                    <span className="px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-mono font-semibold text-xs flex items-center gap-2 shadow-lg">
+                      <Eye size={15} /> Inspect Details &amp; Slides
+                    </span>
+                  </div>
+                </div>
+
+                {/* Topic & Title */}
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase">
+                    {proj.topic}
+                  </span>
+                  <span className="text-xs font-mono text-slate-500">
+                    #{String(proj.id).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3
+                  onClick={() => setDetailProject(proj)}
+                  className="text-xl sm:text-2xl font-bold text-white mb-2.5 tracking-tight group-hover:text-emerald-300 transition-colors cursor-pointer"
+                >
                   {proj.title}
                 </h3>
 
-                {/* Hero / Card Tagline */}
-                {proj.tagline && (
-                  <p className="text-emerald-300/90 text-sm font-mono mb-4 bg-emerald-950/30 border-l-2 border-emerald-400 pl-3 pr-2 py-1.5 rounded-r">
-                    "{proj.tagline}"
-                  </p>
-                )}
+                {/* Concise Overview Summary */}
+                <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                  {overviewText}
+                </p>
 
-                {/* Highlight KPI Metrics Bar */}
-                {proj.metrics && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-                    {proj.metrics.map((m, idx) => (
+                {/* Compact Highlight Metrics */}
+                {topMetrics.length > 0 && (
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    {topMetrics.map((m, mIdx) => (
                       <div
-                        key={idx}
-                        className="bg-slate-900/90 border border-slate-800 p-2 rounded-lg text-center"
+                        key={mIdx}
+                        className="bg-slate-950/60 border border-slate-800/80 px-2.5 py-2 rounded-lg text-center"
                       >
-                        <div className="text-emerald-400 font-mono font-bold text-sm sm:text-base">
+                        <div className="text-emerald-400 font-mono font-bold text-xs sm:text-sm truncate">
                           {m.value}
                         </div>
-                        <div className="text-slate-400 text-[10px] font-mono uppercase tracking-wider">
+                        <div className="text-slate-400 text-[10px] font-mono truncate">
                           {m.label}
                         </div>
                       </div>
@@ -161,113 +175,89 @@ export default function Projects({ data }) {
                   </div>
                 )}
 
-                {/* Content Box */}
-                <div className="bg-slate-800/80 p-5 md:p-6 rounded-xl mb-5 border border-slate-700/80 shadow-md">
-                  <p className="mb-4 text-slate-300 text-sm md:text-base leading-relaxed">
-                    {proj.description}
-                  </p>
-                  <ul className="space-y-2 text-slate-400 text-xs md:text-sm">
-                    {proj.points.map((pt, idx) => {
-                      const colonIdx = pt.indexOf(":");
-                      if (colonIdx > 0 && colonIdx < 60) {
-                        const heading = pt.slice(0, colonIdx);
-                        const body = pt.slice(colonIdx + 1);
-                        return (
-                          <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                            <span className="text-emerald-400 font-bold mt-0.5">▹</span>
-                            <span>
-                              <strong className="text-slate-200 font-semibold">
-                                {heading}:
-                              </strong>
-                              {body}
-                            </span>
-                          </li>
-                        );
-                      }
-                      return (
-                        <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                          <span className="text-emerald-400 font-bold mt-0.5">▹</span>
-                          <span>{pt}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+                {/* Tech Stack Preview */}
+                {visibleTech.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {visibleTech.map((t, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 bg-slate-950/70 border border-slate-800 text-[11px] font-mono text-slate-300 rounded"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {extraTechCount > 0 && (
+                      <span className="px-2 py-0.5 bg-slate-800/60 border border-slate-700/60 text-[11px] font-mono text-emerald-400/80 rounded">
+                        +{extraTechCount} more
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
 
-                {/* Tech Stack Badges */}
-                <ul className="flex flex-wrap gap-2 text-xs font-mono text-slate-300 mb-6">
-                  {proj.tech.map((t, idx) => (
-                    <li
-                      key={idx}
-                      className="px-2.5 py-1 bg-slate-900/80 border border-slate-700/70 rounded-md hover:border-emerald-400/40 transition-colors"
+              {/* Action Buttons Row */}
+              <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                <button
+                  onClick={() => setDetailProject(proj)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 transition-all hover:scale-102 cursor-pointer"
+                >
+                  <Eye size={14} /> View Details &amp; Points <ArrowRight size={13} />
+                </button>
+
+                <div className="flex items-center gap-2">
+                  {hasCaseStudy && (
+                    <button
+                      onClick={() => setCaseStudyProject(proj)}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs font-mono text-emerald-400 hover:text-emerald-300 bg-slate-800/60 hover:bg-slate-800 border border-slate-700 transition-all cursor-pointer"
+                      title="System Architecture Case Study"
                     >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      <Layers size={13} /> Architecture
+                    </button>
+                  )}
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                {proj.caseStudy && (
-                  <button
-                    onClick={() => setActiveModalProject(proj)}
-                    className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 rounded-lg transition-all shadow-sm hover:scale-105 cursor-pointer"
-                  >
-                    <Layers size={15} /> System Architecture ↗
-                  </button>
-                )}
+                  {proj.links?.github && (
+                    <a
+                      href={proj.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-slate-400 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700 rounded-lg transition-all"
+                      title="Source Code"
+                    >
+                      <Github size={15} />
+                    </a>
+                  )}
 
-                {proj.links?.github && (
-                  <a
-                    href={proj.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white border border-slate-700 rounded-lg transition-all"
-                  >
-                    <Github size={15} /> Source
-                  </a>
-                )}
-
-                {proj.links?.live && (
-                  <a
-                    href={proj.links.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-emerald-400 border border-slate-700 rounded-lg transition-all"
-                  >
-                    <ExternalLink size={15} /> Live Demo
-                  </a>
-                )}
-              </div>
-
-              {/* Optional Recruiter / Demo Notice */}
-              {proj.testModeNotice && (
-                <div className="mt-4 text-xs text-amber-300/90 bg-amber-950/25 border border-amber-500/25 rounded-lg px-3.5 py-2 flex items-start gap-2 font-mono">
-                  <span className="text-amber-400 font-bold mt-0.5">💡</span>
-                  <span className="leading-relaxed">{proj.testModeNotice}</span>
+                  {proj.links?.live && (
+                    <a
+                      href={proj.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-slate-400 hover:text-emerald-400 bg-slate-800/60 hover:bg-slate-800 border border-slate-700 rounded-lg transition-all"
+                      title="Live Demo"
+                    >
+                      <ExternalLink size={15} />
+                    </a>
+                  )}
                 </div>
-              )}
-            </div>
-
-            {/* Slideshow Side */}
-            <div className="flex-1 min-h-[320px] flex">
-              <ProjectCarousel
-                images={proj.images}
-                title={proj.title}
-                onOpenCaseStudy={() => setActiveModalProject(proj)}
-                hasCaseStudy={Boolean(proj.caseStudy)}
-              />
-            </div>
-          </motion.div>
-        ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
+
+      {/* Project Detail Modal (Opens when user clicks "View Details" or project card) */}
+      <ProjectDetailModal
+        project={detailProject}
+        isOpen={Boolean(detailProject)}
+        onClose={() => setDetailProject(null)}
+        onOpenCaseStudy={(proj) => setCaseStudyProject(proj)}
+      />
 
       {/* Full Screen Architecture & Case Study Modal */}
       <CaseStudyModal
-        project={activeModalProject}
-        isOpen={Boolean(activeModalProject)}
-        onClose={() => setActiveModalProject(null)}
+        project={caseStudyProject}
+        isOpen={Boolean(caseStudyProject)}
+        onClose={() => setCaseStudyProject(null)}
       />
     </section>
   );

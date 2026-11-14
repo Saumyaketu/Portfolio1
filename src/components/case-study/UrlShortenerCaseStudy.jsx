@@ -248,7 +248,7 @@ export default function UrlShortenerCaseStudy({ activeTab, project }) {
 
             <div className="p-5 bg-emerald-950/20 border border-emerald-500/20 rounded-xl space-y-3">
               <h4 className="text-emerald-400 font-bold text-sm uppercase tracking-wider font-mono">
-                Our Distributed Systems Solution
+                My Distributed Systems Solution
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-start gap-2">

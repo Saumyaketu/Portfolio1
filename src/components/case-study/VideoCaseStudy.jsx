@@ -312,7 +312,7 @@ export default function VideoCaseStudy({ activeTab, project }) {
 
             <div className="p-5 bg-emerald-950/20 border border-emerald-500/20 rounded-xl space-y-3">
               <h4 className="text-emerald-400 font-bold text-sm uppercase tracking-wider font-mono">
-                Our Production Engineering Solutions
+                My Production Engineering Solutions
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
@@ -347,7 +347,7 @@ export default function VideoCaseStudy({ activeTab, project }) {
                 <thead className="bg-slate-900/90 text-slate-300 font-mono uppercase text-[11px]">
                   <tr>
                     <th className="p-3 border-b border-slate-700">Challenge</th>
-                    <th className="p-3 border-b border-slate-700">How You Solved It</th>
+                    <th className="p-3 border-b border-slate-700">How I Solved It</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800 text-slate-300">

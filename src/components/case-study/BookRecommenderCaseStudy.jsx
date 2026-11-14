@@ -254,7 +254,7 @@ export default function BookRecommenderCaseStudy({ activeTab, project }) {
               Why Two-Stage Retrieval Beats Standard Cosine Vector Search
             </h4>
             <p className="text-xs text-slate-300 leading-relaxed mb-3">
-              Standard bi-encoders compress queries and documents into independent fixed-length vectors, losing fine-grained cross-attention between words. Our architecture pairs the speed of bi-encoders with the deep contextual accuracy of cross-encoders:
+              Standard bi-encoders compress queries and documents into independent fixed-length vectors, losing fine-grained cross-attention between words. My architecture pairs the speed of bi-encoders with the deep contextual accuracy of cross-encoders:
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
               <div className="w-full sm:w-auto p-2.5 rounded bg-slate-800/90 border border-purple-500/40 text-purple-300 text-center flex-1">
@@ -322,7 +322,7 @@ export default function BookRecommenderCaseStudy({ activeTab, project }) {
 
             <div className="p-5 bg-emerald-950/20 border border-emerald-500/20 rounded-xl space-y-3">
               <h4 className="text-emerald-400 font-bold text-sm uppercase tracking-wider font-mono">
-                Our Autonomous AI Engineering Solution
+                My Autonomous AI Engineering Solution
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
@@ -454,7 +454,7 @@ export default function BookRecommenderCaseStudy({ activeTab, project }) {
                   <strong>Alternative Considered:</strong> Querying ChromaDB with cosine similarity and immediately returning the top 5 nearest vector neighbors.
                 </p>
                 <p>
-                  <strong>Why Cross-Encoder Reranking:</strong> Bi-encoders compress query and document text into independent embedding vectors. This enables rapid $O(\log N)$ ANN indexing across 7,000+ books, but sacrifices word-level cross-attention. By taking the top 40 candidate pool and passing them through a Cross-Encoder (<code className="text-purple-300 font-mono text-xs">ms-marco-MiniLM-L-6-v2</code>), we compute full bidirectional attention between every query word and description token, massively boosting recommendation relevance.
+                  <strong>Why Cross-Encoder Reranking:</strong> Bi-encoders compress query and document text into independent embedding vectors. This enables rapid $O(\log N)$ ANN indexing across 7,000+ books, but sacrifices word-level cross-attention. By taking the top 40 candidate pool and passing them through a Cross-Encoder (<code className="text-purple-300 font-mono text-xs">ms-marco-MiniLM-L-6-v2</code>), I compute full bidirectional attention between every query word and description token, massively boosting recommendation relevance.
                 </p>
               </div>
             </div>
